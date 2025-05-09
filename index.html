@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>READY - Tienda de Zapatillas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">READY</div>
+    <nav class="nav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="https://wa.me/51904529674" target="_blank">Contacto</a></li>
+      </ul>
+      <button onclick="toggleCart()">🛒</button>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <h1>Descubre las mejores zapatillas importadas</h1>
+    <p>Pisando fuerte en la tendencia con estilo y elegancia</p>
+    <a href="#catalogo" class="btn">Ver catálogo</a>
+
+  </section>
+
+  <div class="carrusel" id="carrusel">
+    <img src="img/1.jpeg" class="activo" alt="Producto 1">
+    <img src="img/2.jpeg" alt="Producto 2">
+    <img src="img/3.jpeg" alt="Producto 3">
+    <img src="img/4.jpeg" alt="Producto 4">
+    <img src="img/5.jpeg" alt="Producto 5">
+    <img src="img/6.jpeg" alt="Producto 6">
+    <img src="img/7.jpeg" alt="Producto 7">
+    <img src="img/8.jpeg" alt="Producto 8">
+    <img src="img/9.jpeg" alt="Producto 9">
+    <img src="img/10.jpeg" alt="Producto 10">
+    
+    <!-- Botones manuales -->
+    <button class="prev" onclick="mostrarImagen(indice - 1)">&#10094;</button>
+    <button class="next" onclick="mostrarImagen(indice + 1)">&#10095;</button>
+    <div class="indicadores" id="indicadores"></div>
+  </div>
+
+  <main>
+    <section class="catalogo" id="catalogo">
+      <!-- Los productos se insertan desde JS -->
+    </section>
+    <!-- sobre nosootros -->
+    <section class="sobre-nosotros" id="sobre-nosotros">
+      <h2>Sobre Nosotros</h2>
+      <div class="frases-personalizadas">
+        <p>READY es una tienda especializada en zapatillas importadas de alta calidad. Inspirados en el estilo urbano, traemos lo mejor a Perú.</p>
+      </div>
+    </section>
+
+    <section class="pagos">
+      <h2>Plataformas de Pago</h2>
+      <div class="bancos">
+        <img src="bancos/bcp" alt="BCP" />
+        <img src="bancos/interbank.png" alt="INTERBANK" />
+        <img src="bancos/bbva.png" alt="BBVA" />
+        <img src="bancos/scotiabank.png" alt="SCOTIABANK" />
+      </div>
+    </section>
+    
+  </main>
+
+  <aside class="carrito" id="carrito">
+    <!-- Botón "X" de cerrar, fuera del contenedor del carrito -->
+    <button class="cerrar-carrito" onclick="cerrarCarrito()">X</button>
+    <!-- Botón de cierre -->
+    <h2>🛒Carrito</h2>
+    <ul id="carrito-items"></ul>
+    <p>Total: S/ <span id="total">0</span></p>
+    <!-- Botón Contactar por WhatsApp -->
+    <button class="whatsapp-btn" onclick="contactarWhatsApp()">
+      <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+    </button>
+
+    <button class="vaciar-carrito">Vaciar Carrito</button>
+
+  </aside>
+
+  <!-- Frases motivadoras -->
+  <section class="redes">
+    <p>Contáctanos: <strong>+51 904 529 674</strong></p>
+    <p>Síguenos:</p>
+    <div class="redes">
+      <a href="https://wa.me/51904529674" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/@gloriaflores" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/gloriaflores" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@gloriaflores" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
+
+  <section class="legales">
+    <a href="#">Políticas de privacidad</a> | <a href="#">Libro de reclamaciones</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 READY - Todos los derechos reservados</p>
+  </footer>
+  <!-- Botón flotante de WhatsApp con número -->
+  <a href="https://wa.me/51904529674" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script src="app.js"></script>
+  <div id="modal-producto" class="modal oculto">
+    <div class="modal-contenido">
+      <div id="modal-detalle"></div>
+    </div>
+  </div>  
+</body>
+</html>
