@@ -1,0 +1,1024 @@
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #000000;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+  --accent: #444;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--accent);
+  color: white;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  text-align: center;
+  padding: 1rem 0.1rem;
+  background: #f0f0f0;
+}
+
+.hero h1 {
+  margin: 0.1rem 0;
+}
+
+.hero p {
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+
+ /* Catálogo general */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+ /* 4 columnas en escritorio */
+  gap: 10px;
+  padding: 0 10px;
+}
+
+/* Responsive: catálogo con 2 columnas en celulares */
+@media (max-width: 768px) {
+  .catalogo {
+   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+ /* 2 columnas en móvil */
+    gap: 2px;
+    padding: 0 10px;
+  }
+}
+
+/* Producto individual */
+.producto {
+  background-color: #fff;
+  border: 1px solid #9c9898a0;
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* Contenedor de imagen fijo */
+.producto .imagen-contenedor {
+  width: 100%;
+  height: 150px; /* Altura uniforme para todas las imágenes */
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 0.1px;
+}
+
+/* Imagen ajustada al contenedor */
+.producto .imagen-contenedor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Rellena el espacio sin deformarse */
+  border-radius: 10px;
+}
+
+/* Imagen del producto */
+.producto img {
+  width: 100%;
+  height: auto;
+  max-height: 150px; /* Controla la altura sin recortar */
+  object-fit: contain; /* Mantiene imagen completa */
+  border-radius: 10px;
+}
+
+/* Título del producto */
+.producto h2 {
+  margin: 1px 0 1px; /* menos espacio abajo */
+  font-size: 0.9rem;
+  color: #3f393b;
+}
+
+.producto p {
+  margin: 0 0 5px; /* quita margen superior */
+}
+.producto .galeria {
+  margin-bottom: 8px; /* antes estaba en 10px o más */
+}
+
+/* Efecto de agrandamiento */
+.producto {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* En escritorio: agranda al pasar el mouse */
+.producto:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* En pantallas táctiles: agranda al tocar */
+@media (hover: none) and (pointer: coarse) {
+  .producto:active {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+
+/* BOTON PRECIO */
+button.precio {
+  background-color: #eae6e677;
+  color: rgb(7, 7, 7);
+  border: none;
+  border-radius: 6px;
+  font-weight: normal;
+  font-size: 0.9rem;
+  cursor: default;
+  transition: background-color 0.3s ease;
+
+  width: 100px;
+  height: 20px;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto; /* Centrado horizontal */
+}
+
+  /* Redes sociales */
+  .redes {
+    margin: 10px 0;
+  }
+  
+  .redes a {
+    color: #121111;
+    font-size: 1.8rem;
+    margin: 0 10px;
+    transition: transform 0.3s;
+  }
+  
+  .redes a:hover {
+    transform: scale(1.2);
+  }
+
+  /* Estilos para el carrusel */
+  .carrusel {
+    width: 100%;
+    max-width: 900px;
+    width: 100%;
+    height: 130vh; /* Ajusta el alto que quieras */
+    margin: 10px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+  }
+
+  .carrusel img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+  }
+  
+  .carrusel img.activo {
+    opacity: 2;
+  }
+ 
+ /* Responsive para móviles */
+@media (max-width: 768px) {
+  .carrusel {
+    width: 100%;     /* Ancho completo del contenedor o pantalla */
+    height: 50vh;    /* Altura del 50% del alto visible del dispositivo */
+  }
+}
+
+  /* Indicadores debajo del carrusel */
+.carrusel .indicadores {
+    position: absolute;
+    bottom: 20px; /* Ponerlo cerca de la parte inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  
+  .carrusel .indicadores span {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .carrusel .indicadores span.activo {
+    background-color: white;
+  }
+  
+  /* Responsive para móviles */
+  @media (max-width: 768px) {
+    .carrusel .indicadores span {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+/* Estilo para el botón de WhatsApp */
+.whatsapp-btn {
+    background-color: #25D366; /* Verde característico de WhatsApp */
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover */
+.whatsapp-btn:hover {
+    background-color: #1ebe5b; /* Un verde un poquito más oscuro al pasar el mouse */
+}
+
+/* Asegurarnos de que no haya color rojo ni borde cuando el botón esté en foco */
+.whatsapp-btn:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #25D366; /* Mantén el color verde característico */
+    border: none;
+}
+
+  /* Estilos sobre nosotros*/
+.sobre-nosotros {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .sobre-nosotros h2 {
+    font-size: 2rem;
+    color: #383637d1;
+    margin-bottom: 15px;
+  }
+  
+  .sobre-nosotros p {
+    font-size: 1.2rem;
+    color: #333;
+    font-style: italic;
+    margin: 10px 0;
+  }
+
+/* productos destacados*/
+.destacados {
+    background-color: #ffffff;
+    padding: 3px;
+    text-align: center;
+  }
+  
+  .destacados h2 {
+    font-size: 2rem;
+    color: #383637d1; /*  */
+    margin-bottom: 1px;
+  }
+  
+  .destacados p {
+    font-size: 1rem;
+    color: #333;
+    font-style: italic;
+    margin: 5px 0;
+  }  
+  
+ /* Botón flotante de WhatsApp con número */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1px;
+    right: 5px;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: rebote 5s infinite;
+  }
+  
+  .whatsapp-float i {
+    font-size: 24px;
+  }
+  
+  /* Animación de rebote */
+  @keyframes rebote {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(-8px);
+    }
+    20% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-5px);
+    }
+    40% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Hover efecto */
+  .whatsapp-float:hover {
+    background-color: #1ebea5;
+    transform: scale(1.1);
+  }
+  
+  /* Ajuste para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      padding: 1px;
+      font-size: 0;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      justify-content: center;
+      bottom: 80px; /* Subir más en móvil */
+    }
+  
+    .whatsapp-float i {
+      font-size: 28px;
+    }
+  }
+  
+
+
+/* Estilo base para todos los botones del carrito */
+.carrito button {
+    color: rgb(255, 255, 255);  /* Texto blanco */
+    border: 1px solid #535857;  /* Borde oscuro */
+    padding: 8px 16px;  /* Aumentar tamaño */
+    border-radius: 80px;  /* Bordes ovalados */
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover para todos los botones */
+.carrito button:hover {
+    transform: scale(1.1);  /* Efecto de agrandamiento al pasar el mouse */
+}
+
+/* Estilo para el botón flotante de "Ver carrito" */
+nav button {
+    position: fixed;  /* Hacer que el botón esté fijo en la pantalla */
+    bottom: 200px;  /* Ubicarlo en la parte inferior */
+    right: 7px;  /* Ubicarlo en la parte derecha */
+    background-color: rgb(79, 78, 78); /* Color inicial (puedes cambiarlo si lo prefieres) */
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+     border-radius: 50%;  /* Bordes ovalados */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Efectos suaves */
+    z-index: 1000;  /* Asegurarnos de que esté por encima de otros elementos */
+}
+
+/* Efecto cuando pasas el mouse */
+nav button:hover {
+    background-color: rgb(110, 107, 107);  /* Cambiar a gris cuando pasas el mouse */
+    transform: scale(1.1);  /* Aumentar ligeramente el tamaño */
+}
+
+/* Estilo para el contenedor del carrito */
+.carrito {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 300px;
+    background-color: rgb(216, 215, 215);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;  /* Inicia oculto */
+    z-index: 999;
+    max-height: 80%;  /* Para evitar que el carrito se haga demasiado largo */
+    overflow-y: auto;  /* Permite el desplazamiento si el contenido excede el tamaño */
+}
+
+/* Estilo para cada producto dentro del carrito */
+.carrito ul {
+    padding: 0;
+    list-style: none;
+}
+
+.carrito li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.carrito li span {
+    margin-right: 10px;
+}
+
+/* MEJORAS ACTUALES PARA CORREJIR MAS ADELANTE */
+
+/* se puede edidat */
+
+  .sobre-nosotros, .pagos {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .legales, .redes {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .bancos {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .bancos img {
+    max-height: 150px;
+  }
+
+  .pagos h2 {
+    font-size: 2rem;
+    color: #383637d1;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-size: 26px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #111;
+    color: white;
+  }
+
+/*MODAL */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 5px;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 10px;
+  position: relative;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* Estilo para carrusel  del MODAL*/
+.modal-carrusel {
+  position: relative;
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.modal-carrusel img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 2%;
+}
+
+.centrado {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+  /* Estilo para el botón de cierre "X"  del MODAL*/
+.cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffffd3;
+  color: #333333;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+ }
+  
+.cerrar-modal:hover {
+    background-color: #f0f0f0;
+}
+  
+.oculto {
+  display: none;
+}
+
+
+/* Botón específico: Agregar al carrito */
+.btn-agregar {
+  width: 200px;  /* puedes modificar */
+  height: 45px;  /* puedes modificar */
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-agregar:hover {
+  background-color: #444;
+  transform: scale(1.05);
+}
+
+.btn-agregar:active {
+  transform: scale(0.95);
+}
+
+
+  /* modal stylo para colores y talla */
+.modal select {
+    padding: 2px;
+    margin: 2px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 25%;
+}
+
+  /* modal stylo para cantidad */
+  
+.modal input {
+    padding: 2px;
+    margin: 2px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 15%;
+}
+  /* modal miniaturas */
+.modal-miniaturas {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-miniaturas .miniatura {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.modal-miniaturas .miniatura:hover {
+  transform: scale(1.05);
+}
+
+.modal-miniaturas .miniatura.activa {
+  border-color: #333;
+  transform: scale(1.1);
+}
+
+/* mensaje de se agrego correctamente */
+.mensaje-exito {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #27ae5fa9;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-weight: bold;
+  opacity: 0.95;
+}
+
+.oculto {
+  display: none;
+}
+
+/* contador de carrito */
+#icono-carrito {
+  position: relative;
+  display: inline-block;
+}
+
+#contador-carrito {
+  display: none; /* oculto por defecto */
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(255, 0, 0, 0.533);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 0.5px 1px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+ /* clase de animación del contador */
+
+ @keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.animar-pop {
+  animation: pop 0.3s ease;
+}
+
+
+/* OFERTAS POWER DEL DIA */
+/* Contenedor principal de ofertas */
+.ofertas-power {
+  padding: 20px;
+  background-color: #fff9f0;
+  border-top: 2px solid #ffa500;
+}
+
+/* Título */
+.ofertas-power h2 {
+  text-align: center;
+  color: #e74c3c;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  margin: 5px 0;
+}
+
+/* Mensaje u otros textos */
+.ofertas-power > p {
+  font-size: 1rem;
+  color: #e74c3c;
+  text-align: center;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+/* Contenedor de productos con scroll horizontal */
+#contenedor-ofertas {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Oculta scrollbar en navegadores WebKit */
+#contenedor-ofertas::-webkit-scrollbar {
+  display: none;
+}
+
+/* Etiqueta de descuento */
+.descuento-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 4px 6px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+/* Producto individual */
+.producto-oferta {
+  position: relative;
+  min-width: 200px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #ffcc80;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Hover efecto (en escritorio) */
+.producto-oferta:hover {
+  transform: scale(1.05);
+}
+
+/* Imagen del producto */
+.producto-oferta img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Nombre del producto */
+.producto-oferta h3 {
+  font-size: 1rem;
+  margin: 8px 0 4px;
+  color: #333;
+}
+
+/* Precio original tachado */
+.producto-oferta .precio-original {
+  color: #000;
+  text-decoration: line-through;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin: 4px 0;
+  text-align: center;
+}
+
+/* Precio con descuento (rojo y destacado) */
+.producto-oferta .precio-oferta {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+}
+
+
+/* MODAL OFERTAs power del dia*/
+.modal-oferta {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-contenido-oferta {
+  background: #fff;
+  width: 95%;
+  max-width: 350px;
+  padding: 5px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.modal-contenido-oferta .imagen-principal img {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cerrar-modal-oferta {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  justify-content: space-between; /* empuja el contenido hacia arriba y el botón hacia abajo */
+  background-color: #ffffffd3;
+  color: #333333;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+ }
+  
+.cerrar-modal-oferta:hover {
+    background-color: #f0f0f0;
+}
+
+/* Contenedor miniaturas */
+.modal-miniaturas-oferta {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-miniaturas-oferta .miniatura-oferta {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, border-color 0.3s ease;
+}
+
+.modal-miniaturas-oferta .miniatura-oferta:hover {
+  transform: scale(1.05);
+}
+
+.modal-miniaturas-oferta .miniatura-oferta.activa {
+  border-color: #333;
+  transform: scale(1.1);
+}
+
+/* Estilos para precios y detalles */
+#oferta-precio-original {
+  text-decoration: line-through;
+  color: #000;
+  margin: 8px 0 4px;
+}
+
+#oferta-precio-descuento {
+  color: #e74c3c; /* rojo */
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 0 12px;
+}
+
+#oferta-detalles,
+#oferta-tallas,
+#oferta-colores {
+  margin: 2px 0;
+}
+
+/* Botón agregar al carrito */
+.btn-agregar-carrito {
+  width: 220px;  /* puedes modificar */
+  height: 35px;  /* puedes modificar */
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 20px auto 0 auto; /* empuja desde el contenido y lo centra */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-agregar-carrito:hover {
+  background-color: #444;
+  transform: scale(1.05);
+}
+
+.btn-agregar-carrito:active {
+  transform: scale(0.95);
+}
+
+/* mensaje de confirmacion del ofertas power del dia */
+.mensaje-confirmacion {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #27ae5fa9;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  font-weight: bold;
+  opacity: 0.95;
+}
+.carrito-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.carrito-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.info-producto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cantidad-control button {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-color: #f0f0f0;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.eliminar-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+}

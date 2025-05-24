@@ -1,0 +1,173 @@
+/* Fondo general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f4f8;
+}
+
+/* Contenedor principal */
+.carrito-pagina {
+  max-width: 1000px;
+  margin: 1px auto;
+  padding: 20px;
+  background-color: #ffffff; /* Puedes cambiar este fondo */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 500px; /* Aumentado */
+}
+
+/* Título */
+.carrito-pagina h1 {
+  text-align: center;
+  margin-bottom: 5px;
+  margin: 0px 0 5px 0;
+}
+
+/* Lista de productos */
+#carrito-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Ítems individuales */
+.carrito-item {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+ font-size: 15px;
+}
+
+.carrito-item img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.carrito-item span {
+  flex: 1;
+}
+
+.carrito-item button {
+  background-color: #e74d3cda;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.carrito-item button:hover {
+  background-color: #c0392b;
+}
+
+/* Total */
+.total-carrito {
+  font-size: 18px;
+  text-align: right;
+  margin: 10px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Botón WhatsApp/ finalizar compra */
+.whatsapp-btn {
+  width: 95%;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe5d;
+}
+
+/* Mejora de scroll en móviles */
+#carrito-items {
+  -webkit-overflow-scrolling: touch; /* Mejora para iOS */
+  scroll-behavior: smooth;
+}
+
+/* En pantallas pequeñas, asegurar que el área del carrito tenga scroll */
+@media (max-width: 600px) {
+  #carrito-items {
+    max-height: 400px;
+  }
+
+  .carrito-pagina {
+    padding: 10px;
+    min-height: 200px; /* Aumentado */
+  }
+
+  .whatsapp-btn {
+    width: 95%;
+  }
+}
+
+.cantidad-control-min {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cantidad-control-min button {
+  background-color: #455056c4;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cantidad-control-min button:hover {
+  background-color: #17191b;
+}
+
+/* estilo de mas compras y vaciar carrito link */
+.carrito-acciones {
+  background-color: #f7f4f4e5; /* gris claro */
+  padding: 5px 28px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 5px 0;
+  font-weight: 600;
+  font-size: 16px;
+  user-select: none;
+}
+
+.carrito-acciones a.realizar-compras {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.carrito-acciones a.realizar-compras:hover {
+  text-decoration: underline;
+}
+
+.carrito-acciones .vaciar-carrito-texto {
+  color: #e74c3c;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.carrito-acciones .vaciar-carrito-texto:hover {
+  text-decoration: underline;
+}

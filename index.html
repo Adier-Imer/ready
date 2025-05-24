@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>READY - Tienda de Zapatillas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">READY</div>
+    <nav class="nav">
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li>
+       <a href="https://wa.me/51970669211?text=Hola%20Ready%2C%20vengo%20desde%20su%20sitio%20web.%20%C2%BFPodr%C3%ADan%20enviarme%20su%20cat%C3%A1logo%2C%20por%20favor%3F%20%C2%A1Muchas%20gracias%21" 
+        target="_blank" rel="noopener noreferrer">
+        Contacto
+       </a>
+    </li>
+
+  </ul>
+    <a href="carrito.html">
+     <button>🛒<span id="contador-carrito">0</span></button>
+     </a>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <h1>Descubre las mejores zapatillas</h1>
+    <p>Camina con Estilo & Elegancia</p>
+
+  </section>
+  <div class="carrusel" id="carrusel">
+    <img src="carrusel/c1.jpg" class="activo" alt="Producto 1">
+    <img src="carrusel/c2.jpeg" alt="Producto 2">
+  
+
+    <!-- Botones manuales -->
+    
+    <div class="indicadores" id="indicadores"></div>
+  </div>
+
+  <main>
+      <section id="ofertas" class="ofertas-power">
+        <h2>Ofertas Power del Día</h2>
+        <p>Descuentos exclusivos: ¡Aprovecha y ahorra!</p>
+        <div id="contenedor-ofertas" class="contenedor-ofertas"></div>
+      </section>
+
+      <section class="destacados" id="destacados">
+       <h2>Productos Destacados</h2>
+        <div class="frases-personalizadas">
+         <p>lo que buscas, lo encuentras aquí</p>
+        </div>
+    </section>  
+    <section class="catalogo" id="catalogo">
+      <!-- Los productos se insertan desde JS -->
+    </section>
+    <!-- sobre nosootros -->
+    <section class="sobre-nosotros" id="sobre-nosotros">
+      <h2>Sobre Nosotros</h2>
+      <div class="frases-personalizadas">
+        <p>READY es una tienda especializada en zapatillas importadas de alta calidad. Inspirados en el estilo urbano, traemos lo mejor para tí.</p>
+      </div>
+    </section>
+  </main>
+
+  <aside class="carrito" id="carrito">
+    <!-- Botón "X" de cerrar, fuera del contenedor del carrito -->
+    <button class="cerrar-carrito" onclick="cerrarCarrito()">X</button>
+    <!-- Botón de cierre -->
+    <h2>🛒Carrito</h2>
+    <ul id="carrito-items"></ul>
+    <p>Total: S/ <span id="total">0</span></p>
+    <!-- Botón Contactar por WhatsApp -->
+    <button class="whatsapp-btn" onclick="contactarWhatsApp()">
+      <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+    </button>
+
+    <button class="vaciar-carrito">Vaciar Carrito</button>
+
+  </aside>
+
+  <!-- redes -->
+  <section class="redes">
+    <p>Contáctanos: <strong>+51 970 669 211</strong></p>
+    <p>Síguenos:</p>
+    <div class="redes">
+      <a href="https://wa.me/51970669211" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/ReadySneakers02/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/readysneakers" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@readysneakers2" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
+
+  <section class="legales">
+    <a href="#">Políticas de privacidad</a> | <a href="#">Libro de reclamaciones</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 READY - Todos los derechos reservados</p>
+  </footer>
+  <!-- Botón flotante de WhatsApp con número -->
+  <a href="https://wa.me/51970669211?text=Hola%20Ready%2C%20vengo%20desde%20su%20sitio%20web.%20%C2%BFPodr%C3%ADan%20enviarme%20su%20cat%C3%A1logo%2C%20por%20favor%3F%20%C2%A1Muchas%20gracias%21" 
+     class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script src="app.js"></script>
+  <div id="modal-producto" class="modal oculto">
+    <div class="modal-contenido">
+      <div id="modal-detalle"></div>
+    </div>
+  </div>  
+  <!-- Al final del body -->
+<div id="mensaje-exito" class="mensaje-exito oculto">¡Producto agregado al carrito!</div>
+<script src="ofertas.js"></script>
+<div id="modal-oferta-dia" class="modal-oferta" style="display: none;">
+  <div class="modal-contenido-oferta">
+    <span class="cerrar-modal-oferta" onclick="cerrarModalOfertaDia()">×</span>
+    
+    <div class="imagen-principal">
+      <img id="oferta-img" src="" alt="Imagen producto">
+    </div>
+
+    <div id="miniaturas-modal" class="modal-miniaturas-oferta"></div>
+
+    <h2 id="oferta-nombre"></h2>
+    <p id="oferta-precio-original"></p>
+    <p id="oferta-precio-descuento"></p>
+    <p id="oferta-detalles"></p>
+    <p id="oferta-tallas"></p>
+    <p id="oferta-colores"></p>
+
+    <button onclick="agregarAlCarritoDesdeOferta()" class="btn-agregar-carrito">Agregar al carrito</button>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

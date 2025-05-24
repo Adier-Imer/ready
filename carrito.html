@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - READY</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="carrito.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">READY</div>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#catalogo">Catálogo</a></li>
+        <li><a href="https://wa.me/51970669211" target="_blank">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="carrito-pagina">
+    <h1>🛒Mis compras  <div class="carrito-acciones">
+      <a href="index.html#ofertas"class="realizar-compras">← Volver a la tienda</a>
+      <span class="vaciar-carrito-texto" onclick="vaciarCarrito()">Vaciar carrito</span>
+    </div></h1>
+
+    <ul id="carrito-items"></ul>
+    <div class="total-carrito">
+      <p>Total: S/ <span id="total">0</span></p>
+    </div>
+    <button class="whatsapp-btn" onclick="contactarWhatsApp()">
+      <i class="fab fa-whatsapp"></i> finalizar compra
+    </button>
+
+    <div class="boton-regresar">
+    
+    </div>
+  </main>
+
+  <section class="pagos">
+      <h2>Nuestras formas de Pago</h2>
+      <div class="bancos">
+        <img src="bancos/yape1.png" alt="SCOTIABANK" />
+      </div>
+  </section>
+
+  <script src="app.js"></script>
+  <script src="carrito.js"></script>
+</body>
+</html>
